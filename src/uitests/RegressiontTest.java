@@ -3,9 +3,11 @@ package uitests;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class RegressiontTest {
@@ -20,27 +22,18 @@ public class RegressiontTest {
 	}
 	@After
 	public void teardown(){
-		System.out.println("AfterTest");
 		driver.close();
 		driver.quit();
 	}
 	@Test
 	public void TestCase1(){
 		driver.findElement(By.name("userName")).sendKeys("satya");
-		driver.findElement(By.name("password")).sendKeys("satya");
+		driver.findElement(By.name("password")).sendKeys("satya1");
 		driver.findElement(By.name("login")).click();
+		WebElement element =driver.findElement(By.linkText("SIGN-ON"));
+		Assert.assertEquals("Failed:Because the actual is not same as the expected.","SIGN-OFF", element.getText());
+		
 	}
-	@Test
-	public void TestCase2(){
-		System.out.println("TestCase2");
-		}
-	@Test
-	public void TestCase3(){
-		System.out.println("TestCase3");
-	}
-	@Test
-	public void TestCase4(){
-		System.out.println("TestCase4");
-	}
+	
 
 }
