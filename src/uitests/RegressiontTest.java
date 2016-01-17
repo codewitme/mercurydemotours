@@ -5,10 +5,13 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import objectrepository.LoginPage;
 
 public class RegressiontTest {
 	FirefoxDriver driver;
@@ -27,13 +30,41 @@ public class RegressiontTest {
 	}
 	@Test
 	public void TestCase1(){
-		driver.findElement(By.name("userName")).sendKeys("satya");
-		driver.findElement(By.name("password")).sendKeys("satya1");
-		driver.findElement(By.name("login")).click();
-		WebElement element =driver.findElement(By.linkText("SIGN-ON"));
+		driver.findElement( (By)LoginPage.objects().get("username")).sendKeys("satya");
+		driver.findElement( (By)LoginPage.objects().get("password")).sendKeys("satya1");
+		driver.findElement((By) LoginPage.objects().get("login")).click();
+		WebElement element =driver.findElement(By.partialLinkText("SIGN"));
 		Assert.assertEquals("Failed:Because the actual is not same as the expected.","SIGN-OFF", element.getText());
 		
 	}
+	@Test
+	public void TestCase2(){
+		driver.findElement( (By)LoginPage.objects().get("username")).sendKeys("satya");
+		driver.findElement( (By)LoginPage.objects().get("password")).sendKeys("satya1");
+		driver.findElement((By) LoginPage.objects().get("login")).click();
+		WebElement element =driver.findElement(By.partialLinkText("SIGN"));
+		Assert.assertEquals("Failed:Because the actual is not same as the expected.","SIGN-OFF", element.getText());
+		
+	}
+	@Test
+	public void TestCase3(){
+		driver.findElement( (By)LoginPage.objects().get("username")).sendKeys("satya");
+		driver.findElement( (By)LoginPage.objects().get("password")).sendKeys("satya1");
+		driver.findElement((By) LoginPage.objects().get("login")).click();
+		WebElement element =driver.findElement(By.partialLinkText("SIGN"));
+		Assert.assertEquals("Failed:Because the actual is not same as the expected.","SIGN-OFF", element.getText());
+		
+	}
+	@Test
+	public void TestCase4(){
+		driver.findElement( (By)LoginPage.objects().get("username")).sendKeys("satya");
+		driver.findElement( (By)LoginPage.objects().get("password")).sendKeys("satya1");
+		driver.findElement((By) LoginPage.objects().get("login")).click();
+		WebElement element =driver.findElement(By.partialLinkText("SIGN"));
+		Assert.assertEquals("Failed:Because the actual is not same as the expected.","SIGN-OFF", element.getText());
+		
+	}
+	
 	
 
 }
